@@ -6,71 +6,10 @@ for m = 2:99 %for rows 1 through 100
         white_neighbors = 0;
         black_neighbors = 0;
         if current_gen(m,n) == 1
-            if current_gen(m-1,n-1) == 1
-                white_neighbors = white_neighbors+1;
-            end
-	
-            if current_gen(m-1,n) == 1
-                white_neighbors = white_neighbors+1;
-            end
-	
-            if current_gen(m-1,n+1) == 1
-                white_neighbors = white_neighbors+1;
-            end
-	
-            if current_gen(m,n-1) == 1
-                white_neighbors = white_neighbors+1;
-            end
-	
-            if current_gen(m,n+1) == 1
-                white_neighbors = white_neighbors+1;
-            end
-	
-            if current_gen(m+1,n-1) == 1
-                white_neighbors = white_neighbors+1;
-            end
-	
-            if current_gen(m+1,n) == 1
-                white_neighbors = white_neighbors+1;
-            end
-		
-            if current_gen(m+1,n+1) == 1
-           		white_neighbors = white_neighbors+1;
-            end
+           
         elseif current_gen(m,n) == 0
-            if current_gen(m-1,n-1) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-	
-            if current_gen(m-1,n) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-	
-            if current_gen(m-1,n+1) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-	
-            if current_gen(m,n-1) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-	
-            if current_gen(m,n+1) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-	
-            if current_gen(m+1,n-1) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-	
-            if current_gen(m+1,n) == 0
-                gray_neighbors = gray_neighbors+1;
-            end
-		
-            if current_gen(m+1,n+1) == 0
-           		gray_neighbors = gray_neighbors+1;
-            end
+            
         end
-        
         
         if current_gen(m,n) == 1
             if (white_neighbors < 2 || white_neighbors > 3)
@@ -81,7 +20,7 @@ for m = 2:99 %for rows 1 through 100
                 new_gen(m,n) = 1;
             end 
         elseif current_gen(m,n) == 0
-            if (black_neighbors < 2 || black_neighbors >3)
+            if (black_neighbors < 2 || black_neighbors > 3)
                 new_gen(m,n) = 0;
             end
             
@@ -93,7 +32,3 @@ for m = 2:99 %for rows 1 through 100
     end
 end
 
-pred_show_stuff(new_gen);
-colormap gray
-axis off
-end
