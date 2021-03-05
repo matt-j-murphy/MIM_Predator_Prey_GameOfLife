@@ -1,0 +1,10 @@
+function [] = pred_game_of_life()
+current_gen = randi(100);
+imagesc(current_gen);
+
+while true
+    [new_gen] = pred_check_neighbors(current_gen);
+    current_gen = new_gen;
+end
+
+end
