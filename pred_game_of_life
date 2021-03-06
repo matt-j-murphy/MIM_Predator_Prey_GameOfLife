@@ -1,6 +1,10 @@
+
 function [] = pred_game_of_life()
-current_gen = randi(100);
+current_gen = zeros(100);
+current_gen(randi([1,100],1,50), randi([1,100],1,50)) = 1;
+current_gen(randi([1,100],1,30), randi([1,100],1,30)) = 0.5;
 imagesc(current_gen);
+colormap hsv
 
 while true
     [new_gen] = pred_check_neighbors(current_gen);
