@@ -1,7 +1,7 @@
 
 
 function [] = pred_game_of_life()
-current_gen = zeros(50);
+current_gen = zeros(50); %initialize a matrix called current_gen composed of zeros that is size 50x50
 
 current_gen(randi([2,49],1,1), randi([2,49],1,1)) = 1; %location of predator 1
 current_gen(randi([2,49],1,1), randi([2,49],1,1)) = 1; %location of predator 2
@@ -11,8 +11,8 @@ current_gen(randi([2,49],1,1), randi([2,49],1,1)) = 1; %location of predator 4
 current_gen(randi([2,49],1,30), randi([2,49],1,30)) = 0.5; %locations of prey in first gen
 imagesc(current_gen);
 
-while true
-    [new_gen] = pred_check_neighbors(current_gen);
-    current_gen = new_gen;
+while true %The game runs forever
+    [new_gen] = pred_check_neighbors(current_gen); %apply the rules of the game to the current_gen matrix in order to create the next generation of cells, new_gen
+    current_gen = new_gen; %the new generation from the previous iteration becomes the current generation for the subsequent iteration
 end
 
