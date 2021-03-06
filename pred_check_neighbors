@@ -11,112 +11,190 @@ for m = 2:99 %for rows 1 through 100
         prey_prey_neighbors = 0; %counts prey neighbors of prey cell
         prey_pred_neighbors = 0; %counts predator neighbors of prey cell
         
+        dead_pred_neighbors = 0; %counts predator neighbors of dead cell
+        dead_prey_neighbors = 0; %counts prey neighbors of dead cell
         
-        if current_gen(m,n) == 1 %checks boundary cells of 1's (predators)
+        if current_gen(m,n) == 1.0000 %checks and counts different boundary cells of 1's (predators)
            
-            if current_gen(m-1,n-1) == 1
+           if current_gen(m-1,n-1) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m-1,n-1) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-           if current_gen(m-1,n) == 1
+           if current_gen(m-1,n) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m-1,n) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-           if current_gen(m-1,n+1) == 1
+           if current_gen(m-1,n+1) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m-1,n+1) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-           if current_gen(m,n-1) == 1
+           if current_gen(m,n-1) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m,n-1) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-           if current_gen(m,n+1) == 1
+           if current_gen(m,n+1) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m,n+1) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-           if current_gen(m+1,n-1) == 1
-               pred_neighbors =  pred_neighbors + 1;
+           if current_gen(m+1,n-1) == 1.0000
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           elseif current_gen(m+1,n-1) == 0.5000
+               pred_prey_neighbors = pred_prey_neighbors + 1;
            end
            
-           if current_gen(m+1,n) == 1
+           if current_gen(m+1,n) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m+1,n) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-           if current_gen(m+1,n+1) == 1
+           if current_gen(m+1,n+1) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
-           else 
+           elseif current_gen(m+1,n+1) == 0.5000
                pred_prey_neighbors = pred_prey_neighbors+1;
            end
            
-        elseif current_gen(m,n) == 0.5 %checks boundary cells for other 0.5's (prey)
+        elseif current_gen(m,n) == 0.5000 %checks and counts different boundary cells of 0.5's (prey)
+           
+           if current_gen(m-1,n-1) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m-1,n-1) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m-1,n) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m-1,n) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m-1,n+1) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m-1,n+1) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m,n-1) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m,n-1) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m,n+1) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m,n+1) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m+1,n-1) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m+1,n-1) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m+1,n) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m+1,n) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m+1,n+1) == 0.5000
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           elseif current_gen(m+1,n+1) == 1.0000
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+        elseif current_gen(m,n) == 0 %checks and counts different boundary cells of 0's (dead cells)
             
-           if current_gen(m-1,n-1) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m-1,n-1) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m-1,n-1) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m-1,n) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m-1,n) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m-1,n) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m-1,n+1) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m-1,n+1) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m-1,n+1) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m,n-1) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m,n-1) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m,n-1) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m,n+1) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m,n+1) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m,n+1) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m+1,n-1) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m+1,n-1) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m+1,n-1) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m+1,n) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m+1,n) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m+1,n) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
            
-           if current_gen(m+1,n+1) == 0.5
-               prey_prey_neighbors =  prey_prey_neighbors + 1;
-           else 
-               prey_pred_neighbors = prey_pred_neighbors+1;
+           if current_gen(m+1,n+1) == 1.0000
+               dead_pred_neighbors =  dead_pred_neighbors + 1;
+           elseif current_gen(m+1,n+1) == 0.5000
+               dead_prey_neighbors = dead_prey_neighbors+1;
            end
-           
+            
         end
         
-        if current_gen(m,n) == 1
-
-        elseif current_gen(m,n) == 0.5
-
+        if current_gen(m,n) == 1.0000
+            
+            if pred_pred_neighbors < 3
+                new_gen(m,n) = 0;
+            else
+                new_gen(m,n) = 1.000;
+            end
+            
+        elseif current_gen(m,n) == 0.5000
+            
+            if prey_pred_neighbors > 4
+                new_gen(m,n) = 1.0000;
+            else
+                current_gen(m,n) = 0.5000;
+            end
+            
+            if prey_prey_neighbors < 1 || prey_prey_neighbors > 3
+                new_gen(m,n) = 0;
+            else
+                new_gen(m,n) = 0.5000;
+            end
+                
         elseif current_gen(m,n) == 0
+            
+            if dead_prey_neighbors > 1
+                new_gen(m,n) = 0.500;
+            else
+                new_gen(m,n) = 0;
+            end
             
         end
         
@@ -124,7 +202,5 @@ for m = 2:99 %for rows 1 through 100
 end
 
 pred_show_stuff(new_gen);
-colormap hsv
 axis off
 end
-
