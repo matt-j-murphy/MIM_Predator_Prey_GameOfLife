@@ -165,28 +165,28 @@ for m = 2:49 %for rows 1 through 50
            end
             
         end
-        
-        if current_gen(m,n) == 1.0000
+    
+        if current_gen(m,n) == 1.0000 %predator cell surrounded by 8 prey or 5 predators cells, cell dies.
             new_gen(m,n) = 1.0000;
             if pred_prey_neighbors == 8 || pred_pred_neighbors > 5
                 new_gen(m,n) = 0;
             end
             
-            if pred_pred_neighbors == 0 && pred_prey_neighbors == 0
+            if pred_pred_neighbors == 0 && pred_prey_neighbors == 0 %predator cell with no neighbors, cell dies.
                 new_gen(m,n) = 0;
             end
            
         elseif current_gen(m,n) == 0.5000
             
-            if prey_prey_neighbors < 2 || prey_prey_neighbors > 3
+            if prey_prey_neighbors < 2 || prey_prey_neighbors > 3 %prey with less than 2 & greater than 3 neighbors, cell dies.
                 new_gen(m,n) = 0;
-            elseif prey_prey_neighbors == 2 || prey_prey_neighbors == 3
+            elseif prey_prey_neighbors == 2 || prey_prey_neighbors == 3 %prey with 2 or 3 neighbors, cell lives.
                 new_gen(m,n) = 0.5000;
             end
                 
         elseif current_gen(m,n) == 0
             
-            if dead_prey_neighbors > 2
+            if dead_prey_neighbors > 2 %dead cells surrounded by 2 or more prey come back to life.
                 new_gen(m,n) = 0.500;
             else
                 new_gen(m,n) = 0;
@@ -201,5 +201,4 @@ pred_show_stuff(new_gen);
 new_gen(randi([2,49],1,1), randi([2,49],1,1)) = 1;
 axis off
 end
-
 
