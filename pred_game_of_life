@@ -1,13 +1,13 @@
 
 function [] = pred_game_of_life()
 current_gen = zeros(100);
-current_gen(randi([1,100],1,50), randi([1,100],1,50)) = 1;
-current_gen(randi([1,100],1,30), randi([1,100],1,30)) = 0.5;
+current_gen(randi([1,100],1,50), randi([1,100],1,50)) = 1; %sets random indices of current_gen matrix to values of 1 (sets as a predator)
+current_gen(randi([1,100],1,30), randi([1,100],1,30)) = 0.5; %sets random indices of current_gen matrix to values of 0.5 (sets as prey)
 imagesc(current_gen);
-colormap hsv
+colormap hsv %displays in color so that 1 = yellow, 0.5 = teal, and 0 = dark blue
 
 while true
-    [new_gen] = pred_check_neighbors(current_gen);
+    [new_gen] = pred_check_neighbors(current_gen); %runs pred_check_neighbors and displays each new generation according to the survival rules we set
     current_gen = new_gen;
 end
 
