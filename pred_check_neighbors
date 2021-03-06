@@ -1,34 +1,130 @@
 function [new_gen] = pred_check_neighbors(current_gen)
 
 new_gen = zeros(100);
+
 for m = 2:99 %for rows 1 through 100
 	for n = 2:99 %for columns 1 through 100
-        white_neighbors = 0;
-        black_neighbors = 0;
-        if current_gen(m,n) == 1
+        
+        pred_pred_neighbors = 0; %count of predator neighbors of a predator cell
+        pred_prey_neighbors = 0; %counts prey neighbors of a predator cell
+        
+        prey_prey_neighbors = 0; %counts prey neighbors of prey cell
+        prey_pred_neighbors = 0; %counts predator neighbors of prey cell
+        
+        
+        if current_gen(m,n) == 1 %checks boundary cells of 1's (predators)
            
+            if current_gen(m-1,n-1) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+           if current_gen(m-1,n) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+           if current_gen(m-1,n+1) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+           if current_gen(m,n-1) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+           if current_gen(m,n+1) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+           if current_gen(m+1,n-1) == 1
+               pred_neighbors =  pred_neighbors + 1;
+           end
+           
+           if current_gen(m+1,n) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+           if current_gen(m+1,n+1) == 1
+               pred_pred_neighbors =  pred_pred_neighbors + 1;
+           else 
+               pred_prey_neighbors = pred_prey_neighbors+1;
+           end
+           
+        elseif current_gen(m,n) == 0.5 %checks boundary cells for other 0.5's (prey)
+            
+           if current_gen(m-1,n-1) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m-1,n) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m-1,n+1) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m,n-1) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m,n+1) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m+1,n-1) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m+1,n) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+           if current_gen(m+1,n+1) == 0.5
+               prey_prey_neighbors =  prey_prey_neighbors + 1;
+           else 
+               prey_pred_neighbors = prey_pred_neighbors+1;
+           end
+           
+        end
+        
+        if current_gen(m,n) == 1
+
+        elseif current_gen(m,n) == 0.5
+
         elseif current_gen(m,n) == 0
             
         end
         
-        if current_gen(m,n) == 1
-            if (white_neighbors < 2 || white_neighbors > 3)
-                new_gen(m,n) = 0;
-            end
-            
-            if (white_neighbors == 2 || white_neighbors == 3)
-                new_gen(m,n) = 1;
-            end 
-        elseif current_gen(m,n) == 0
-            if (black_neighbors < 2 || black_neighbors > 3)
-                new_gen(m,n) = 0;
-            end
-            
-            if (black_neighbors == 2 || black_neighbors == 3)
-                new_gen(m,n) = 0;
-            end 
-            
-        end
     end
+end
+
+pred_show_stuff(new_gen);
+colormap hsv
+axis off
 end
 
