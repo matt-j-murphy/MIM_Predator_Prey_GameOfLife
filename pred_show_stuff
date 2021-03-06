@@ -1,6 +1,6 @@
 function [] = pred_show_stuff(new_gen)
 imagesc(new_gen);
-colormap gray
+colormap hsv %hsv instead of black and white so we can better distinguish between predator and prey cells
 axis off
-drawnow limitrate
+drawnow
 end
