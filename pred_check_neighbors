@@ -1,9 +1,9 @@
 function [new_gen] = pred_check_neighbors(current_gen)
 
-new_gen = zeros(100);
+new_gen = zeros(50);
 
-for m = 2:99 %for rows 1 through 100
-	for n = 2:99 %for columns 1 through 100
+for m = 2:49 %for rows 1 through 50
+	for n = 2:49 %for columns 1 through 50
         
         pred_pred_neighbors = 0; %count of predator neighbors of a predator cell
         pred_prey_neighbors = 0; %counts prey neighbors of a predator cell
@@ -167,30 +167,26 @@ for m = 2:99 %for rows 1 through 100
         end
         
         if current_gen(m,n) == 1.0000
-            
-            if pred_pred_neighbors < 3
+            new_gen(m,n) = 1.0000;
+            if pred_prey_neighbors == 8 || pred_pred_neighbors > 5
                 new_gen(m,n) = 0;
-            else
-                new_gen(m,n) = 1.000;
             end
             
+            if pred_pred_neighbors == 0 && pred_prey_neighbors == 0
+                new_gen(m,n) = 0;
+            end
+           
         elseif current_gen(m,n) == 0.5000
             
-            if prey_pred_neighbors > 4
-                new_gen(m,n) = 1.0000;
-            else
-                current_gen(m,n) = 0.5000;
-            end
-            
-            if prey_prey_neighbors < 1 || prey_prey_neighbors > 3
+            if prey_prey_neighbors < 2 || prey_prey_neighbors > 3
                 new_gen(m,n) = 0;
-            else
+            elseif prey_prey_neighbors == 2 || prey_prey_neighbors == 3
                 new_gen(m,n) = 0.5000;
             end
                 
         elseif current_gen(m,n) == 0
             
-            if dead_prey_neighbors > 1
+            if dead_prey_neighbors > 2
                 new_gen(m,n) = 0.500;
             else
                 new_gen(m,n) = 0;
@@ -202,5 +198,8 @@ for m = 2:99 %for rows 1 through 100
 end
 
 pred_show_stuff(new_gen);
+new_gen(randi([2,49],1,1), randi([2,49],1,1)) = 1;
 axis off
 end
+
+
