@@ -1,9 +1,9 @@
 function [new_gen] = pred_check_neighbors(current_gen)
 
-new_gen = zeros(50);
+new_gen = zeros(50); %initialize the new_gen matrix
 
-for m = 2:49 %for rows 1 through 50
-	for n = 2:49 %for columns 1 through 50
+for m = 2:49 %for rows 2 through 49
+	for n = 2:49 %for columns 2 through 49
         
         pred_pred_neighbors = 0; %count of predator neighbors of a predator cell
         pred_prey_neighbors = 0; %counts prey neighbors of a predator cell
@@ -15,7 +15,8 @@ for m = 2:49 %for rows 1 through 50
         dead_prey_neighbors = 0; %counts prey neighbors of dead cell
         
         if current_gen(m,n) == 1.0000 %checks and counts different boundary cells of 1's (predators)
-           
+        
+	%This section counts the number of neighbors (both predator neighbors and prey neighbors) of a predator cell.
            if current_gen(m-1,n-1) == 1.0000
                pred_pred_neighbors =  pred_pred_neighbors + 1;
            elseif current_gen(m-1,n-1) == 0.5000
@@ -66,6 +67,7 @@ for m = 2:49 %for rows 1 through 50
            
         elseif current_gen(m,n) == 0.5000 %checks and counts different boundary cells of 0.5's (prey)
            
+	   %This section counts the number of neighbors (both predator neighbors and prey neighbors) of a prey cell.
            if current_gen(m-1,n-1) == 0.5000
                prey_prey_neighbors =  prey_prey_neighbors + 1;
            elseif current_gen(m-1,n-1) == 1.0000
@@ -165,7 +167,8 @@ for m = 2:49 %for rows 1 through 50
            end
             
         end
-    
+    	
+	%This section implements the rules of the game.
         if current_gen(m,n) == 1.0000 %predator cell surrounded by 8 prey or 5 predators cells, cell dies.
             new_gen(m,n) = 1.0000;
             if pred_prey_neighbors == 8 || pred_pred_neighbors > 5
