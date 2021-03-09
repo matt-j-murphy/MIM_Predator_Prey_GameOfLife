@@ -1,5 +1,12 @@
-# predator_prey_gol
+# Predator_Prey_GameOfLife
+
 Predator-Prey version of Conway's Game of Life
+
+1's = predators (YELLOW)
+
+0.5's = prey (TEAL)
+
+0's = dead/non-existent cells (DARK BLUE)
 
 Instructions:
 - Run pred_check_neighbors AND pred_show_stuff first. 
