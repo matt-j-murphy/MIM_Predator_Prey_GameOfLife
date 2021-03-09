@@ -1,4 +1,4 @@
-# Predator_Prey_GameOfLife
+# Game of Life: Predator vs Prey
 
 Predator-Prey version of Conway's Game of Life
 
