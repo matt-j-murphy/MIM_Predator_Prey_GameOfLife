@@ -1,7 +1,11 @@
 # **Game of Life: Predator vs Prey**
   
 Predator vs Prey version of Conway's Game of Life
-  
+
+MIM Group Members:
+1. Miriam Arden
+2. Isabel Riches
+3. Matthew Murphy
   
   
 **Predators** = 1's (YELLOW)
