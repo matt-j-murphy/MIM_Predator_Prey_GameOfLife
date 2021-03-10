@@ -17,7 +17,6 @@ MIM Group Members:
   
   
 **Instructions**:
-- Run pred_check_neighbors AND pred_show_stuff first. These functions have no outputs, but will be called later.
-- Then, run pred_game_of_life in order to begin the game visualization :)
+- Run pred_game_of_life in order to begin the game visualization :)
     
   
