@@ -1,4 +1,4 @@
-
+#Written by Matthew Murphy
 
 function [] = pred_game_of_life()
 current_gen = zeros(50); %initialize a matrix called current_gen composed of zeros that is size 50x50
