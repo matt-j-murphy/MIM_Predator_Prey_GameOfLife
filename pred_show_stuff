@@ -1,3 +1,5 @@
+#Written by Matthew Murphy
+
 function [] = pred_show_stuff(new_gen)
 imagesc(new_gen);
 axis off
