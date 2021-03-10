@@ -1,3 +1,5 @@
+#written by Matthew Murphy
+
 function [new_gen] = pred_check_neighbors(current_gen)
 
 new_gen = zeros(50); %initialize the new_gen matrix
