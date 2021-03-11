@@ -1,6 +1,6 @@
 # **Game of Life: Predator vs Prey**
 
-DEMO/ INSTNRUCTIONAL VIDEO --> https://drive.google.com/file/d/1heGNOtIUYgLEutBmrSnQRhSo28e5cxII/view?usp=sharing
+DEMO/ INSTNRUCTIONAL VIDEO --> @ 3:16 https://drive.google.com/file/d/1heGNOtIUYgLEutBmrSnQRhSo28e5cxII/view?usp=sharing
   
 Predator vs Prey version of Conway's Game of Life
 
